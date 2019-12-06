@@ -2,7 +2,7 @@
  * @Author: Haojin Sun
  * @Date: 2019-12-05 17:14:18
  * @LastEditors: Haojin Sun
- * @LastEditTime: 2019-12-06 14:25:10
+ * @LastEditTime: 2019-12-06 15:15:35
  */
 const {
     series,
@@ -17,10 +17,14 @@ const uglify = require('gulp-uglify')
 const imagemin = require('gulp-imagemin')
 const rename = require('gulp-rename')
 const concat = require('gulp-concat')
-const useref = require('gulp-useref')
+const useref = require('gulp-useref')   //将html内的css js 分离出来 再以文件导入
 const myScss = require('gulp-sass')
 const autoprefixer = require('gulp-autoprefixer')
 const connect = require('gulp-connect')
+/**
+ *  在html文件中 以 @@include('./footer.html') 这样的形式去引入相同文件
+ */
+const fileinclude = require('gulp-file-include')
 
 function server(){
     connect.server({
@@ -32,7 +36,10 @@ function server(){
 
 function html() {
     return src('./src/*.html')
-        .pipe(useref())
+        .pipe(fileinclude({
+            prefix: '@@',
+            basepath: '@file'
+        }))
         .pipe(dest('./build/'))
         .pipe(connect.reload())
 }
