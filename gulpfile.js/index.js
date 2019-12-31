@@ -2,7 +2,7 @@
  * @Author: Haojin Sun
  * @Date: 2019-12-05 17:14:18
  * @LastEditors: Haojin Sun
- * @LastEditTime: 2019-12-13 17:42:04
+ * @LastEditTime: 2019-12-16 16:48:58
  */
 const {
     series,
@@ -86,11 +86,11 @@ function css() {
 function scss() {
     return src(`${app.srcPath}css/**/*.scss`)
         .pipe(myScss())
-        .pipe(dest(`${app.devPath}css/`))
         .pipe(autoprefixer(targets))
-        .pipe(rename({
-            extname: '.min.css'
-        }))
+        .pipe(dest(`${app.devPath}css/`))
+        // .pipe(rename({
+        //     extname: '.min.css'
+        // }))
         .pipe(cssver())
         .pipe(cssmin())
         .pipe(dest(`${app.prdPath}css/`))
@@ -113,21 +113,21 @@ function js() {
 function ts() {
     return src('./src/ts/**/*.ts')
         .pipe(tsProject())
-        .js.pipe(dest(`${app.devPath}ts/`))
         .pipe(babel())
+        .js.pipe(dest(`${app.devPath}js/`))
         .pipe(concat('tsmain.js'))
         .pipe(uglify())
         .pipe(rename({
             extname: '.min.js'
         }))
-        .pipe(dest(`${app.prdPath}ts/`))
+        .pipe(dest(`${app.prdPath}js/`))
         .pipe(connect.reload())
 }
 
 function img() {
     return src('./src/img/**/*.{png,jpg,gif}')
-        // .pipe(imagemin())
         .pipe(dest(`${app.devPath}img/`))
+        // .pipe(imagemin())
         .pipe(dest(`${app.prdPath}img/`))
         .pipe(connect.reload())
 }
@@ -146,4 +146,5 @@ watch('./src/js/**/*.js', js);
 watch('./src/js/**/*.ts', ts);
 watch('./src/**/*.html', html);
 watch('./src/plugin', plugin);
+// exports.default = series(cleanBuild, cleaDist, scss, ts, html, img, plugin, server);
 exports.default = series(cleanBuild, cleaDist, js, css, scss, ts, html, img, plugin, server);
