@@ -3,7 +3,7 @@
  * @Author: Haojin Sun
  * @Date: 2020-01-04 14:15:31
  * @LastEditors  : Haojin Sun
- * @LastEditTime : 2020-01-04 16:47:18
+ * @LastEditTime : 2020-01-06 09:41:15
  */
 const {
     series,
@@ -40,7 +40,7 @@ function myClean() {
 }
 
 function html() {
-    return src(`${app.srcPath}page/*.html`)
+    return src(`${app.srcPath}views/*.html`)
         .pipe(fileinclude({
             prefix: '@@',
             basepath: '@file'
@@ -48,7 +48,7 @@ function html() {
             console.error('Task:copy-html,', err.message);
             this.end();
         })
-        .pipe(dest(app.devPath))
+        .pipe(dest(`${app.devPath}views`))
         .pipe(connect.reload())
 }
 
