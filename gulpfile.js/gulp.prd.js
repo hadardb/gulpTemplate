@@ -38,7 +38,7 @@ function myClean() {
 }
 
 function html() {
-    return src(`${app.srcPath}page/*.html`)
+    return src(`${app.srcPath}views/*.html`)
         .pipe(fileinclude({
             prefix: '@@',
             basepath: '@file'
@@ -46,7 +46,7 @@ function html() {
             console.error('Task:copy-html,', err.message);
             this.end();
         })
-        .pipe(dest(app.prdPath))
+        .pipe(dest(`${app.srcPath}views`))
         .pipe(connect.reload())
 }
 
