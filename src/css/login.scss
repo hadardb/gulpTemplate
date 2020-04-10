@@ -1,72 +1,34 @@
 @import './main';
-
 .lgoin-body{
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 100%;
-
-}
-.lgoin-body-box{
-    padding-top: 100px;
-    width: 50%;
-    margin: 0 auto;
+    margin-top: 25%;
+    width: 100%;
     text-align: center;
-    &>img{
-        width: 80%;
-    }
 }
-.lgoin-body-box-inputs{
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    height: 400px;
-    margin-top: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    color: white;
-    &>div{
-        display: flex;
-        margin: 6px 0;
-        padding: 12px 12px;
-        border-bottom: 2px solid #232c4d;
-        width: 70%;
-        align-items: flex-end;
-        text-align:left;
-    }
+.inputs{
+    margin-top: 10%;
     & input{
-        border: 0;
-        background-color: transparent;
-        width: 100%;
-        margin-top: 4px;
-        padding: 4px 8px;
-        color: white;
-        font-size: 16px;
+        display: block;
+        margin: 0 auto;
+        width: 80%;
+        border: none;
+        border-bottom: 1px solid #000;
+        text-align: center;
+        font-size: 2rem;
+        line-height: 2rem;
+        margin-bottom: 20%;
         outline: none;
     }
-    & img{
-        margin-right: 10px;
-        height: 38px;
-        width: 35px;
+    & button{
+        width: 80%;
+        padding: 8px;
+        font-size: 1.2rem;
+        background-color: #1E9FFF;
+        color: white;
+        border: none;
+        border-radius: 2px;
     }
 }
-.lgoin-body-box-inputs-input{
-    width: 100%;
-    &>div{
-        padding: 0 8px;
-    }
+#answer{
+    margin-top: 10%;
+    font-size: 2rem;
 }
-#login{
-    display: inline-block;
-    background: #00c6ff;
-    padding: 12px 20px;
-    width: 70%;
-    border-radius: 10px;
-    margin-top: 40px;
-    font-size: 21px;
-    letter-spacing: 4px;
-}
-::-webkit-input-placeholder { color:white; }
-::-moz-placeholder { color:white; } /* firefox 19+ */
-:-ms-input-placeholder { color:white; } /* ie */
-input:-moz-placeholder { color:white; }

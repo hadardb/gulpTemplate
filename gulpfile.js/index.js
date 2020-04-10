@@ -3,7 +3,7 @@
  * @Author: Haojin Sun
  * @Date: 2019-12-05 17:14:18
  * @LastEditors  : Haojin Sun
- * @LastEditTime : 2020-01-04 15:45:24
+ * @LastEditTime : 2020-01-04 22:09:41
  */
 const {
     series,
@@ -42,22 +42,22 @@ if (process.env.NODE_ENV === 'dev') {
 function server() {
     connect.server({
         livereload: true,
-        port: 8888,
+        port: 8898,
         root: process.env.NODE_ENV === 'dev'? 'build' : 'dist',
         livereload: true, //自动更新
         // 请求代理
-        middleware: function (connect, opt) {
-            return [
-                proxy('/api', {
-                    target: 'http://localhost:8080',
-                    changeOrigin: true
-                }),
-                proxy('/otherServer', {
-                    target: 'http://IP:Port',
-                    changeOrigin: true
-                })
-            ]
-        }
+        // middleware: function (connect, opt) {
+            // return [
+            //     proxy('/api', {
+            //         target: 'http://localhost:8080',
+            //         changeOrigin: true
+            //     }),
+            //     proxy('/otherServer', {
+            //         target: 'http://IP:Port',
+            //         changeOrigin: true
+            //     })
+            // ]
+        // }
     })
 }
 watch('./src/css/**/*.css', css);
